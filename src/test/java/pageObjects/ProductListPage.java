@@ -35,11 +35,11 @@ public class ProductListPage
 	public void verifyPrdName() throws InterruptedException
 	{
 		Thread.sleep(2000);
-		prdList = searchResult.findElements(By.xpath(".//*[contains(@class ,'sresult lvresult clearfix li')]"));
+		prdList = driver.findElements(By.xpath("//*[contains(@class ,'s-item__wrapper clearfix')]"));
 		System.out.println(prdList.size());
 		for(int i=1;i<prdList.size();i++)
 		{
-			String Name = prdList.get(i).findElement(By.className("lvtitle")).getText();
+			String Name = prdList.get(i).findElement(By.className("s-item__title")).getText();
 			Name = Name.toUpperCase();
 			//System.out.println(Name);
 			if(!(Name.contains("SONY") && Name.contains("TV")))

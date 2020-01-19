@@ -39,19 +39,17 @@ public class Hooks {
 		scenarioName = scenario.getName();
 		Log.info("executing scenario " + scenarioName);
 		String OS = System.getProperty("os.name");
+		Properties properties;
 		
-		if(PropertyReader.getProperty("browser").equalsIgnoreCase("firefox"))
-		{
-			File firefoxPathBinary = new File("/opt/firefox/firefox-bin");
-			System.setProperty("webdriver.firefox.bin", firefoxPathBinary.getAbsolutePath());
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
 			System.out.println(
 					"==========================EXECUTION STARTED FOR " + scenarioName + "=======================");
-			driver = new FirefoxDriver();
+			driver = new ChromeDriver();
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			Log.info("browser opened ");
 			driver.manage().window().maximize();
 			Log.info("browser maximaised ");
-		}
+		
 		
 		Objhomepage = PageFactory.initElements(driver, HomePage.class);
 		Objproductlist = PageFactory.initElements(driver, ProductListPage.class);
